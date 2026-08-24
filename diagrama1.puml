@@ -1,4 +1,5 @@
-@startuml class Vehiculo {
+@startuml diagrama1
+class Vehiculo {
 }
 class Auto extends Vehiculo {
 

@@ -14,7 +14,5 @@ public class Calculadora {
         System.out.println("Suma de enteros: " + calculadora.sumar(5,10));
         System.out.println("Suma de tres enteros: " + calculadora.sumar(5,10,15));
         System.out.println("Suma de numeros de punto flotante: " + calculadora.sumar(3.5,2.8));
-
-
     }
 }

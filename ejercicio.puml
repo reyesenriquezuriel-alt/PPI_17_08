@@ -1,0 +1,47 @@
+@startuml ejercicio
+
+class Vehiculo {
+    # modelo : String
+    # anio : int
+    # velocidad : double
+    + Vehiculo(modelo : String, anio : int)
+    + acelerar() : void
+    + frenar() : void
+    + obtenerModelo() : String
+    + mostrarDetalles() : void
+}
+
+class Auto {
+    - puertas : int
+    + Auto(modelo : String, anio : int, puertas : int)
+    + obtenerPuertas() : int
+    + mostrarDetalles() : void
+}
+
+class AutoDeportivo {
+    - velocidadMaxima : double
+    + AutoDeportivo(modelo : String, anio : int, puertas : int, velMax : double)
+    + turbo() : void
+    + mostrarDetalles() : void
+}
+
+class Moto {
+    - tieneSidecar : boolean
+    + Moto(modelo : String, anio : int)
+    + agregarSidecar() : void
+    + mostrarDetalles() : void
+}
+
+class Camion {
+    - cargaMaxima : double
+    + Camion(modelo : String, anio : int, carga : double)
+    + cargar(peso : double) : void
+    + mostrarDetalles() : void
+}
+
+Vehiculo <|-- Auto
+Auto <|-- AutoDeportivo
+Vehiculo <|-- Moto
+Vehiculo <|-- Camion
+
+@enduml
