@@ -1,0 +1,19 @@
+@startuml casos_usos
+left to right direction
+actor Cliente
+actor Taquilla 
+actor Administrador
+rectangle "Sistema de reservas" {
+    usecase "Realizar Reserva"
+    usecase "Cancelar Reserva"
+    usecase "Registrar Ingreso"
+    usecase "Reservar Sala"
+    usecase "Generar Reportes"
+}
+
+Cliente --> "Realizar Reserva"
+Cliente --> "Cancelar Reserva"
+Taquilla --> "Registrar Ingreso"
+Cliente --> "Reservar Sala"
+Administrador --> "Generar Reportes"
+@enduml
