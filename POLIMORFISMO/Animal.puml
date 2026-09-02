@@ -1,0 +1,61 @@
+@startuml
+abstract class Animal {
+    - nombre : String
+    - energia : int
+    + Animal(nombre : String)
+    + hacerSonido() : void
+    + moverse() : void
+    + dormir() : void
+    + comer() : void
+}
+
+class Perro {
+    - raza : String
+    + Perro(nombre : String, raza : String)
+    + hacerSonido() : void
+    + moverse() : void
+    + traerObjeto() : void
+}
+
+class Gato {
+    - color : String
+    + Gato(nombre : String, color : String)
+    + hacerSonido() : void
+    + moverse() : void
+    + rasgunar() : void
+}
+
+class Pajaro {
+    - envergaduraAlas : double
+    + Pajaro(nombre : String, envergaduraAlas : double)
+    + hacerSonido() : void
+    + moverse() : void
+    + volar() : void
+}
+
+class Vaca {
+    - tipo : String
+    + Vaca(nombre : String, tipo : String)
+    + hacerSonido() : void
+    + moverse() : void
+    + darLeche() : void
+}
+
+class Oveja {
+    - lanaColor : String
+    + Oveja(nombre : String, lanaColor : String)
+    + hacerSonido() : void
+    + moverse() : void
+    + producirLana() : void
+}
+
+class SistemaAnimales {
+    + main(args : String[]) : void
+}
+
+Animal <|-- Perro
+Animal <|-- Gato
+Animal <|-- Pajaro
+Animal <|-- Vaca
+Animal <|-- Oveja
+@enduml
