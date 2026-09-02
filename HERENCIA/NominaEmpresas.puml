@@ -1,0 +1,56 @@
+@startuml
+
+
+class NominaEmpresas {
+  - empleados : List<Empleado>
+  - totalNomina : double
+  + agregarEmpleado(emp) : void
+  + calcularNominaTotal() : double
+  + mostrarReporte() : void
+  + main(args) : void
+}
+
+class Empleado {
+  - nombre : String
+  - cedula : String
+  - sueldoBase : double
+  - id : int
+  - totalEmpleados : int
+  - proximoId : int
+  + Empleado(nombre, cedula, sueldo)
+  + calcularSueldo() : double
+  + obtenerNombre() : String
+  + obtenerSueldo() : double
+  + obtenerDetalles() : String
+  + obtenerTotalEmpleados() : int
+  + mostrarDatos() : void
+}
+
+class Obrero {
+  - especialidad : String
+  + Obrero(nombre, cedula, sueldo, especialidad)
+  + calcularSueldo() : double
+}
+
+class Supervisor {
+  - departamento : String
+  - empleados : int
+  + Supervisor(nombre, cedula, sueldo, dept)
+  + calcularSueldo() : double
+  + agregarEmpleado() : void
+}
+
+class Gerente {
+  - departamento : String
+  - presupuesto : double
+  + Gerente(nombre, cedula, sueldo, dept, presup)
+  + calcularSueldo() : double
+  + autorizarGasto(monto) : boolean
+}
+
+NominaEmpresas "1" o-- "*" Empleado
+Empleado <|-- Obrero
+Empleado <|-- Supervisor
+Empleado <|-- Gerente
+
+@enduml
