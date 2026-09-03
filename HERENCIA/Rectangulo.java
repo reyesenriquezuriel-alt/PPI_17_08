@@ -7,7 +7,6 @@ class Rectangulo extends Figura {
         this.ancho = ancho;
     }
 
-    @Override
     double calcularArea() {
         return longitud * ancho;
     }
