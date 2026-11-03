@@ -1,0 +1,26 @@
+@startuml
+
+title Diagrama de Secuencia - Postulación a Vacante
+
+actor Aspirante
+boundary "Interfaz de usuario" as Interfaz
+control "Controlador de postulaciones" as Controlador
+database "Base de Datos" as BD
+participant "Servicio de correo externo" as Correo
+
+Aspirante -> Interfaz : Ingresa
+Interfaz -> Controlador : Postulación a vacante
+Controlador -> BD : Guardar sus datos
+
+alt Disponible
+    BD --> Controlador : Postulación disponible
+    Controlador -> Correo : Notificar estado de postulación
+    Correo --> Aspirante : Notificación de estado\nde postulación
+
+else No disponible
+    BD --> Controlador : Vacante no disponible
+    Controlador --> Interfaz : Mensaje de no disponible
+    Interfaz --> Aspirante : No disponible
+end
+
+@enduml

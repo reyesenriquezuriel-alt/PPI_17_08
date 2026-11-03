@@ -1,0 +1,38 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+
+title Diagrama de Casos de Uso - Sistema de Vacantes
+
+actor Aspirante
+actor Reclutador
+actor "Servicio de Correo Externo" as Correo
+
+rectangle "Sistema de Vacantes" {
+
+    usecase "Registro de aspirante" as Registro
+    usecase "Búsqueda de vacantes" as Busqueda
+    usecase "Postulación de vacante" as Postulacion
+
+    usecase "Gestionar vacantes" as Gestion
+    usecase "Evaluar candidatos" as Evaluar
+    usecase "Propuesta de vacantes" as Propuesta
+
+    usecase "Notificar estado\nde postulación" as Notificar
+}
+
+Aspirante --> Registro
+Aspirante --> Busqueda
+Aspirante --> Postulacion
+
+Reclutador --> Gestion
+Reclutador --> Evaluar
+
+Postulacion ..> Propuesta : <<include>>
+Evaluar ..> Propuesta : <<include>>
+Postulacion ..> Notificar : <<include>>
+
+Correo --> Notificar
+
+@enduml

@@ -4,7 +4,7 @@ class Circulo extends Figura {
      public Circulo(double radio) {
          this.radio = radio;
      }
-
+    
      double calcularArea() {
          return Math.PI * radio * radio;
      }

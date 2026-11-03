@@ -70,6 +70,7 @@ public class CuentaBancaria {
         System.out.println("Total de cuentas: " + totalCuentas);
         System.out.println("Próximo ID: " + proxId);
     }
+
     public static void main(String[] args) {
 
     
