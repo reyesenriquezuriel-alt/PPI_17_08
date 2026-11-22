@@ -1,0 +1,462 @@
+:root{
+
+    --verde:#68773D;
+    --verde-secundario:#586536;
+    --oro:#9C8412;
+    --fondo:#F4F6F9;
+    --texto:#1F2937;
+    --blanco:#FFFFFF;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:'Segoe UI',sans-serif;
+    background:var(--fondo);
+
+}
+
+/* ========================= */
+/* SIDEBAR */
+/* ========================= */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:260px;
+    height:100vh;
+
+    background:
+    linear-gradient(
+        180deg,
+        var(--verde),
+        var(--verde-secundario)
+    );
+
+    color:white;
+
+    overflow-y:auto;
+
+    box-shadow:
+    5px 0 20px rgba(0,0,0,.12);
+
+}
+
+/* LOGO */
+
+.logo{
+
+    text-align:center;
+
+    padding:12px 10px;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.15);
+
+}
+
+.logo img{
+
+    width:60px;
+
+    margin-bottom:6px;
+
+}
+
+.logo h3{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+.logo p{
+
+    font-size:12px;
+
+    margin-top:2px;
+
+    opacity:.85;
+
+}
+
+/* MENU */
+
+.menu{
+
+    padding:10px;
+
+}
+
+.menu-title{
+
+    margin-top:10px;
+
+    margin-bottom:4px;
+
+    padding-left:10px;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    opacity:.75;
+
+    font-weight:700;
+
+}
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:10px 12px;
+
+    border-radius:10px;
+
+    margin-bottom:2px;
+
+    transition:.3s;
+
+    font-size:15px;
+
+}
+
+.menu a:hover{
+
+    background:
+    rgba(255,255,255,.15);
+
+    transform:
+    translateX(4px);
+
+}
+
+.menu a i{
+
+    font-size:16px;
+
+}
+
+/* ========================= */
+/* CONTENIDO */
+/* ========================= */
+
+.content{
+
+    margin-left:260px;
+
+    min-height:100vh;
+
+}
+
+.topbar{
+
+    background:white;
+
+    padding:25px 35px;
+
+    box-shadow:
+    0 2px 12px rgba(0,0,0,.05);
+
+}
+
+.page-title{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:var(--texto);
+
+}
+
+.page-subtitle{
+
+    color:#6B7280;
+
+    margin-top:3px;
+
+}
+
+.main{
+
+    padding:30px;
+
+}
+
+/* ========================= */
+/* TARJETAS */
+/* ========================= */
+
+.card-dashboard{
+
+    border:none;
+
+    border-left:
+    5px solid var(--oro);
+
+    border-radius:18px;
+
+    background:white;
+
+    box-shadow:
+    0 5px 18px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.card-dashboard:hover{
+
+    transform:
+    translateY(-4px);
+
+}
+
+.card-main{
+
+    border:none;
+
+    border-radius:18px;
+
+    background:white;
+
+    box-shadow:
+    0 5px 18px rgba(0,0,0,.08);
+
+}
+
+/* ========================= */
+/* CONTADORES */
+/* ========================= */
+
+.card-number{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:var(--verde);
+
+}
+
+.card-label{
+
+    text-transform:uppercase;
+
+    font-size:13px;
+
+    color:#6B7280;
+
+    letter-spacing:.5px;
+
+}
+
+.card-icon{
+
+    font-size:42px;
+
+    color:var(--oro);
+
+}
+
+/* ========================= */
+/* FORMULARIOS */
+/* ========================= */
+
+.form-control,
+.form-select{
+
+    height:48px;
+
+    border-radius:12px;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:var(--verde);
+
+    box-shadow:
+    0 0 0 .2rem rgba(104,119,61,.15);
+
+}
+
+.btn-uaem{
+
+    background:var(--verde);
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    height:48px;
+
+    font-weight:600;
+
+}
+
+.btn-uaem:hover{
+
+    background:var(--oro);
+
+    color:white;
+
+}
+
+/* ========================= */
+/* TABLAS */
+/* ========================= */
+
+.table{
+
+    margin-top:15px;
+
+}
+
+.table thead{
+
+    background:var(--verde);
+
+    color:white;
+
+}
+
+.table th{
+
+    padding:15px;
+
+}
+
+.table td{
+
+    padding:14px;
+
+    vertical-align:middle;
+
+}
+
+.table-hover tbody tr:hover{
+
+    background:#F7F8FB;
+
+}
+
+/* ========================= */
+/* BADGES */
+/* ========================= */
+
+.badge-disponible{
+
+    background:#198754;
+
+    color:white;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+}
+
+.badge-agotado{
+
+    background:#DC3545;
+
+    color:white;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+}
+
+.badge-activo{
+
+    background:#198754;
+
+    color:white;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+}
+
+.badge-inactivo{
+
+    background:#DC3545;
+
+    color:white;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+}
+
+.badge-reserva{
+
+    background:var(--oro);
+
+    color:white;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+}
+
+.badge-devuelto{
+
+    background:#0D6EFD;
+
+    color:white;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+}
+
+/* ========================= */
+/* TÍTULOS */
+/* ========================= */
+
+.section-title{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}

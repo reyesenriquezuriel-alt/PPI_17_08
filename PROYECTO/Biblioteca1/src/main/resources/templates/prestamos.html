@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Gestión de Préstamos</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet">
+
+<link rel="stylesheet" href="/css/estilo.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <img
+        src="/img/logo.png"
+        alt="UAEMéx">
+
+        <h3>Biblioteca</h3>
+
+        <p>UAEMéx</p>
+
+    </div>
+
+    <div class="menu">
+
+        <div class="menu-title">
+            General
+        </div>
+
+        <a href="/">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+        </a>
+
+        <div class="menu-title">
+            Catálogo
+        </div>
+
+        <a href="/libros">
+            <i class="bi bi-book"></i>
+            Libros
+        </a>
+
+        <div class="menu-title">
+            Usuarios
+        </div>
+
+        <a href="/usuarios">
+            <i class="bi bi-people"></i>
+            Usuarios
+        </a>
+
+        <div class="menu-title">
+            Operaciones
+        </div>
+
+        <a href="/prestamos">
+            <i class="bi bi-arrow-left-right"></i>
+            Préstamos
+        </a>
+
+        <a href="/reservas">
+            <i class="bi bi-journal-bookmark"></i>
+            Reservas
+        </a>
+
+        <div class="menu-title">
+            Administración
+        </div>
+
+        <a href="/reportes">
+            <i class="bi bi-file-earmark-bar-graph"></i>
+            Reportes
+        </a>
+
+    </div>
+
+</div>
+
+<div class="content">
+
+    <div class="topbar">
+
+        <div class="page-title">
+            Gestión de Préstamos
+        </div>
+
+        <div class="page-subtitle">
+            Registro y control de préstamos bibliográficos.
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="card card-main">
+
+            <div class="card-body p-4">
+
+                <div class="section-title">
+
+                    Registrar Préstamo
+
+                </div>
+
+                <form id="formPrestamo">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+
+                                Usuario
+
+                            </label>
+
+                            <select
+                            id="usuario"
+                            class="form-select">
+
+                                <option value="">
+                                    Seleccione un usuario
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+
+                                Libro
+
+                            </label>
+
+                            <select
+                            id="libro"
+                            class="form-select">
+
+                                <option value="">
+                                    Seleccione un libro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-3">
+
+                        <div class="col-md-3">
+
+                            <button
+                            type="submit"
+                            class="btn btn-uaem w-100">
+
+                                Registrar Préstamo
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="card card-main mt-4">
+
+            <div class="card-body p-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h4>
+
+                        Historial de Préstamos
+
+                    </h4>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover">
+
+                        <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Libro</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="tablaPrestamos">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+cargarUsuarios();
+cargarLibros();
+cargarPrestamos();
+
+function cargarUsuarios(){
+
+fetch("/api/usuarios")
+
+.then(r => r.json())
+
+.then(data => {
+
+const combo =
+document.getElementById("usuario");
+
+combo.innerHTML =
+'<option value="">Seleccione un usuario</option>';
+
+data.forEach(usuario => {
+
+combo.innerHTML +=
+
+`<option value="${usuario.id}">
+${usuario.nombre}
+</option>`;
+
+});
+
+});
+
+}
+
+function cargarLibros(){
+
+fetch("/api/libros")
+
+.then(r => r.json())
+
+.then(data => {
+
+const combo =
+document.getElementById("libro");
+
+combo.innerHTML =
+'<option value="">Seleccione un libro</option>';
+
+data.forEach(libro => {
+
+combo.innerHTML +=
+
+`<option value="${libro.id}">
+${libro.titulo}
+</option>`;
+
+});
+
+});
+
+}
+
+function cargarPrestamos(){
+
+fetch("/api/prestamos")
+
+.then(r => r.json())
+
+.then(data => {
+
+const tabla =
+document.getElementById("tablaPrestamos");
+
+tabla.innerHTML = "";
+
+data.forEach(prestamo => {
+
+let estado =
+
+prestamo.estado === "DEVUELTO"
+
+?
+
+'<span class="badge-devuelto">Devuelto</span>'
+
+:
+
+'<span class="badge-activo">Activo</span>';
+
+tabla.innerHTML += `
+
+<tr>
+
+<td>${prestamo.id}</td>
+
+<td>${prestamo.usuario.nombre}</td>
+
+<td>${prestamo.libro.titulo}</td>
+
+<td>${estado}</td>
+
+<td>
+
+<button
+class="btn btn-success btn-sm"
+onclick="devolverPrestamo(${prestamo.id})">
+
+Devolver
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+});
+
+}
+
+document
+.getElementById("formPrestamo")
+.addEventListener("submit",
+
+function(e){
+
+e.preventDefault();
+
+const prestamo = {
+
+usuarioId:
+Number(
+document.getElementById("usuario").value
+),
+
+libroId:
+Number(
+document.getElementById("libro").value
+)
+
+};
+
+fetch("/api/prestamos/prestar",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(prestamo)
+
+})
+.then(() => {
+
+document
+.getElementById("formPrestamo")
+.reset();
+
+cargarPrestamos();
+
+});
+
+});
+
+function devolverPrestamo(id){
+
+fetch("/api/prestamos/devolver/" + id,{
+
+method:"PUT"
+
+})
+.then(() => {
+
+cargarPrestamos();
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
